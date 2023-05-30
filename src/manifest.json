@@ -1,0 +1,42 @@
+{
+  "name": "Levitate",
+  "description": "add-description",
+  "version": "1.0.0",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "permissions": [
+    "storage","offscreen"
+  ],
+  "action": {
+    "default_popup": "../popup.html"
+  },
+  "background": {
+    "service_worker": "background.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/*"
+      ],
+      "js": [
+        "content-scripts/content.tsx"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "assets/*"
+      ]
+    }
+  ],
+  "manifest_version": 3
+}

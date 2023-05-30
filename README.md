@@ -1,2 +1,9 @@
-# PPP-Toxicity-Detection-Chrome-Extension
-A chrome extension that filters toxic text from social media. Part of Personal Professional Project @ INSAT
+## Usage
+The dist directory will be created after starting the project.Then Open chrome://extensions/ and import the dist directory.
+```bash
+# development
+pnpm dev
+
+# production
+pnpm build
+```

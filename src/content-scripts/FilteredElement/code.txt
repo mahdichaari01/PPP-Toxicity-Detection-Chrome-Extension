@@ -1,0 +1,19 @@
+<div p="${percentage}" t="${text}mom" r=false>
+    <span class="message">
+        <span>Levitate</span> detected ${percentage} toxicity in this comment.
+        
+    </span>
+    <span class="bad">
+        ${text}
+    </span>
+    <label>
+        
+    </label>
+    <span onClick="()=>{
+        oldState = this.parentNode.getAttribute('r');
+        this.parentNode.setAttribute('r', oldState == 'true' ? 'false' : 'true');
+        this.parentNode.querySelector('.bad').style.display = oldState == 'true' ? 'none' : 'block';
+        this.parentNode.querySelector('.message').style.display = oldState == 'true' ? 'block' : 'none';
+        this.innerHTML = oldState == 'true' ? 'reveal' : 'hide';
+    }">reveal</span>
+</div>
