@@ -22,7 +22,7 @@ export function BackendFactory<Req, Res>(url: string) {
     return {
         sendMessage: async <Req, Res>(message: Req): Promise<Res> => {
             const response = await fetch(url, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },

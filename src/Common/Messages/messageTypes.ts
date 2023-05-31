@@ -1,5 +1,5 @@
 import { ITask, Task } from "../Tasks";
-import ResolvedTask from "../Tasks/ResolvedTask";
+import ResolvedTask, { IResolvedMessage } from "../Tasks/ResolvedTask";
 
 enum MessageTypes {
     TasksMessage = 'TaskMessage',
@@ -18,7 +18,7 @@ interface TasksMessage {
 
 interface ResolvedTaskMessage {
     type: MessageTypes.ResolvedTaskMessage;
-    payload: ResolvedTask[];
+    payload: IResolvedMessage;
 }
 
 

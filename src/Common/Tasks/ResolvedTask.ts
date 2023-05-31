@@ -1,4 +1,5 @@
 import { BaseTask } from "../BaseTask";
+import { MessageTypes } from "../Messages";
 
 export default class ResolvedTask implements BaseTask {
     constructor(
@@ -6,4 +7,11 @@ export default class ResolvedTask implements BaseTask {
         public content: string,
         public tabId: number,
     ) { }
+}
+
+export interface IResolvedMessage {
+
+    id: string;
+    result: number;
+
 }

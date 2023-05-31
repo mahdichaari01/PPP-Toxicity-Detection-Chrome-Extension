@@ -37,24 +37,30 @@ import "./content.css";
 async function bootstrap() {
   // const threshold = await getThreshold();
   let threshold = await getThreshold();
-
+  console.log(threshold);
   //setup Task store
   const store = new Array<{ id: String; node: HTMLElement }>();
 
   //setup handlers
   const handlers = new Map<MessageTypes, messageHandler>();
   handlers.set(MessageTypes.ResolvedTaskMessage, (message, sender, f) => {
-    console.log(message);
-    // if (message.type !== MessageTypes.ResolvedTaskMessage) return;
-    // message.payload.forEach((item) => {
-    //   const { id, content } = item;
-    //   const index = store.findIndex((x) => x.id === id);
-    //   if (index === -1) return;
-    //   const node = store[index].node;
-    //   if (parseInt(content) >= threshold)
-    //     node.innerHTML = ToxicityMessage(content, node.innerText).outerHTML;
-    //   store.splice(index, 1);
-    // });
+    if (message.type !== MessageTypes.ResolvedTaskMessage) return;
+    const { id, result } = message.payload;
+
+    const index = store.findIndex((x) => x.id === id);
+    if (index === -1) return;
+    
+    const node = store[index].node;
+    if (result >= threshold)
+    {
+      // console.log(result);
+
+      node.innerHTML = ToxicityMessage(
+        (Math.round(result * 100) / 100).toString(),
+        node.innerText
+      ).outerHTML;
+    }
+    store.splice(index, 1);
   });
   listen(handlers);
 
